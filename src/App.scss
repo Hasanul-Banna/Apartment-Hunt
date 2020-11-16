@@ -67,7 +67,28 @@ h2{
     letter-spacing: 3px;
     color: $theme-color;
 }
-
+#or {
+    text-align: center;
+    position: relative;
+}
+#or::before{
+    content: '';
+    position: absolute;
+    width: 45%;
+    height: 2px;
+    bottom: 40%;
+    left: 0%;
+    background: gray;
+}
+#or::after{
+    content: '';
+    position: absolute;
+    width: 45%;
+    height: 2px;
+    bottom: 40%;
+    right: 0%;
+    background: gray;
+}
 
 footer {
     color: #fff;

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { apartmentData } from '../fakeData';
-import Navibar from './Navbar';
 import { useForm } from "react-hook-form";
 
 
@@ -15,7 +14,7 @@ const Details = () => {
     }
     return (
         <>
-            <Navibar />
+            
             <section className="banner">
                 <div className="layer">
                     <h1>{CurrentApartment.name}</h1>
