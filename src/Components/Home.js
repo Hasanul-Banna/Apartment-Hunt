@@ -15,8 +15,7 @@ const Home = () => {
         <>
             <Navibar />
             <section className="banner">
-                <div className="layer text-center">
-                    <br /> <br /> <br /> <br /> <br />
+                <div className="layer">
                     <h1>FIND YOUR HOUSE RENT</h1>
                     <br />
                     <div >

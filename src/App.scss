@@ -22,7 +22,7 @@ h2{
 }
 .banner {
     background: url(./images/banner.png);
-    height:65vh;
+    min-height:65vh;
     background-size: cover;
     background-position: center;
     position: relative;
@@ -34,6 +34,11 @@ h2{
     }
 }
 .layer {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
     background-color: rgba(0, 0, 0, 0.7);
     position: absolute;
     top: 0;
@@ -43,7 +48,6 @@ h2{
     div{
         display: flex;
         justify-content: center;
-        align-content: center;
         flex-wrap: wrap;
     }
 }

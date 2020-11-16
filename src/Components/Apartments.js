@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBath, faBed, faMapMarker } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const Apartments = ({ apartment }) => {
     // console.log(apartment);
@@ -17,7 +18,10 @@ const Apartments = ({ apartment }) => {
                 </div>
                 <div className="d-flex justify-content-between mt-2">
                     <span className="price">BDT {apartment.price}/-</span>
-                    <Button className="btn" variant="info">View Details</Button>
+                    <Link to={`/Apartment/${apartment.id}`}>
+                        <Button className="btn" variant="info">View Details</Button>
+                    </Link>
+
                 </div>
             </div>
         </div>
