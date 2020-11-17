@@ -4,6 +4,8 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import { firebaseConfig } from './firebase.config';
 import { useHistory, useLocation } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 if (firebase.apps.length === 0) {
     firebase.initializeApp(firebaseConfig);
@@ -44,8 +46,8 @@ const GoggleFbLogin = () => {
 
     return (
         <div>
-            <button onClick={handleGoogleSignIn} className="rounded-pill  btn-light">Continue with Goggle</button>
-            <button onClick={handleFbSignIn} className="rounded-pill btn-primary">Continue with Facebook</button>
+            <button onClick={handleGoogleSignIn} className="rounded-pill  btn-warning"><FontAwesomeIcon icon={faGoogle} /> Login with Goggle</button>
+            <button onClick={handleFbSignIn} className="rounded-pill btn-primary"><FontAwesomeIcon icon={faFacebook} /> Login with Facebook</button>
         </div>
     );
 };
