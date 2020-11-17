@@ -11,8 +11,11 @@ import { useState } from 'react';
 import Login from './Components/Login';
 import SignUp from './Components/SignUp';
 import Navibar from './Components/Navbar';
-import PrivateRoute from './Components/PrivateRoute';
+import PrivateRoute from './Components/PrivateRoute'; 
 import Details from "./Components/Details";
+import AddRent from "./Components/Dashboard/AddRent";
+import BookingList from "./Components/Dashboard/BookingList";
+import MyRent from "./Components/Dashboard/MyRent";
 export const UserContext = createContext();
 
 
@@ -21,9 +24,9 @@ function App() {
   return (
     <UserContext.Provider value={[loggedInUser, setloggedInUser]}>
       <Router>
-      <Navibar />
+        <Navibar />
         <Switch>
-        <Route path="/home">
+          <Route path="/home">
             <Home />
           </Route>
           <PrivateRoute path="/Apartment/:id">
@@ -33,8 +36,17 @@ function App() {
             <Login />
           </Route>
           <Route path="/SignUp">
-              <SignUp/>
-            </Route>
+            <SignUp />
+          </Route>
+          <Route path="/BookingList">
+            <BookingList />
+          </Route>
+          <Route path="/AddRent">
+            <AddRent />
+          </Route>
+          <Route path="/MyRent">
+            <MyRent />
+          </Route>
           <Route path="/">
             <Home />
           </Route>

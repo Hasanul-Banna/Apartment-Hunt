@@ -5,7 +5,7 @@ import Apartments from './Apartments';
 import service1 from '../images/icons/apartment 1.png';
 import service2 from '../images/icons/affordable 1.png';
 import service3 from '../images/icons/lessee 1.png';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faMapMarker, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookSquare, faInstagramSquare, faLinkedin, faYoutube } from '@fortawesome/free-brands-svg-icons';
 

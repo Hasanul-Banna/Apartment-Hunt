@@ -14,7 +14,7 @@ const Navibar = () => {
                     <Nav.Link href="/home">Home</Nav.Link>
                     <Nav.Link href="/">About</Nav.Link>
                     <Nav.Link href="/">Service</Nav.Link>
-                    <Nav.Link href="/">Dashboard</Nav.Link>
+                    <Nav.Link href="/MyRent">Dashboard</Nav.Link>
                     <Nav.Link href="/">Contact</Nav.Link>
                     {!loggedInUser.name && <Link to="/Login"> <Button className="btn" variant="info">Log in</Button></Link>}
                     {loggedInUser.name && <Button className="btn" variant="info" onClick={() => setloggedInUser('')} >Log Out</Button>}
