@@ -14,18 +14,17 @@ const Home = () => {
         <>
             <section className="banner">
                 <div className="layer">
-                    <h1>FIND YOUR HOUSE RENT</h1>
+                    <h1>FIND YOUR HOTEL ROOM</h1>
                     <br />
                     <div >
-                        <input className="form-control" type="text" placeholder="Search..." />
-                        <Button className="btn ml-3" variant="info">Find Now</Button>
+                        <Button className="btn" variant="info" size="lg">Find Now</Button>
                     </div>
                 </div>
             </section>
             {/* apartments */}
             <section className="">
                 <div className="text-center mt-3 theme-text">
-                    <span>House Rent</span>
+                    <span>Hotel Room Rent</span>
                     <h2>Discover The Latest Rent <br /> Available Today</h2>
                 </div>
                 <div className="container">
@@ -39,8 +38,7 @@ const Home = () => {
             {/* service */}
             <section className="my-5">
                 <div className="text-center mb-3 theme-text">
-                    <span>Service</span>
-                    <h2>We're an agency tailored to all <br /> clients' need that always delivers</h2>
+                    <h2>Your Satisfaction <br/> Is Our First & Foremost Priority</h2>
                 </div>
                 <div className="container">
                     <div className="row">
@@ -66,10 +64,10 @@ const Home = () => {
                 <div className="container pt-5 pb-3">
                     <div className="row">
                         <div className="col-md-5">
-                        <h5>Contact</h5>
-                            <span><FontAwesomeIcon icon={faMapMarker} /> House-no 115/c ( 4th floor ) , Road-no #2 <br/> Mohakhali , Dhaka 1000.</span> <br/>
-                            <span><FontAwesomeIcon icon={faPhone} /> +880-1712-112255 </span> <br/>
-                            <span><FontAwesomeIcon icon={faEnvelope} /> Apartment.hunt@gmail.com </span> <br/>
+                            <h5>Contact</h5>
+                            <span><FontAwesomeIcon icon={faMapMarker} /> House-no 115/c ( 4th floor ) , Road-no #2 <br /> Mohakhali , Dhaka 1000.</span> <br />
+                            <span><FontAwesomeIcon icon={faPhone} /> +880-1712-112255 </span> <br />
+                            <span><FontAwesomeIcon icon={faEnvelope} /> Apartment.hunt@gmail.com </span> <br />
                         </div>
                         <div className="col-md-2">
                             <h5>Company</h5>
@@ -92,7 +90,7 @@ const Home = () => {
                         <div className="col-md-3">
                             <h5>About</h5>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut repellendus dignissimos blanditiis.</p>
-                            <div style={{fontSize:"30px"}} className="d-flex justify-content-between mt-2">
+                            <div style={{ fontSize: "30px" }} className="d-flex justify-content-between mt-2">
                                 <FontAwesomeIcon icon={faFacebookSquare} />
                                 <FontAwesomeIcon icon={faInstagramSquare} />
                                 <FontAwesomeIcon icon={faLinkedin} />

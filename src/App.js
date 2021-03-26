@@ -29,9 +29,9 @@ function App() {
           <Route path="/home">
             <Home />
           </Route>
-          <PrivateRoute path="/Apartment/:id">
+          <Route path="/Apartment/:id">
             <Details />
-          </PrivateRoute>
+          </Route>
           <Route path="/login">
             <Login />
           </Route>

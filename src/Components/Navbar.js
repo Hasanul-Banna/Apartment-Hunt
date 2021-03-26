@@ -11,11 +11,16 @@ const Navibar = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto ">
-                    <Nav.Link href="/home">Home</Nav.Link>
+                    <Link className="nav-link" to="/home">Home</Link>
+                    <Link className="nav-link" to="/">Rooms</Link>
+                    <Link className="nav-link" to="/">About</Link>
+                    <Link className="nav-link" to="/">Contact</Link>
+                    <Link className="nav-link" to="/MyRent">Dashboard</Link>
+                    {/* <Nav.Link href="/home">Home</Nav.Link>
                     <Nav.Link href="/">About</Nav.Link>
                     <Nav.Link href="/">Service</Nav.Link>
                     <Nav.Link href="/MyRent">Dashboard</Nav.Link>
-                    <Nav.Link href="/">Contact</Nav.Link>
+                    <Nav.Link href="/">Contact</Nav.Link> */}
                     {!loggedInUser.name && <Link to="/Login"> <Button className="btn" variant="info">Log in</Button></Link>}
                     {loggedInUser.name && <Button className="btn" variant="info" onClick={() => setloggedInUser('')} >Log Out</Button>}
                 </Nav>
