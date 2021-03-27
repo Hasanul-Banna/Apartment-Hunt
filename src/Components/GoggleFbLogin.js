@@ -16,6 +16,13 @@ const GoggleFbLogin = () => {
     const location = useLocation();
     const { from } = location.state || { from: { pathname: "/" } };
 
+    const setUserToken = () => {
+        firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+          sessionStorage.setItem('token', idToken);
+        }).catch(function(error) {
+          // Handle error
+        });
+      }
     const handleFbSignIn = () => {
         const provider = new firebase.auth.FacebookAuthProvider();
         firebase.auth().signInWithPopup(provider)
@@ -24,7 +31,9 @@ const GoggleFbLogin = () => {
                 const { displayName, email } = result.user;
                 const signedInUser = { name: displayName, email: email };
                 setloggedInUser(signedInUser);
+                setUserToken();
                 history.replace(from);
+                
             }).catch(function (error) {
                 console.log(error.message);
             });
@@ -38,6 +47,7 @@ const GoggleFbLogin = () => {
             const { displayName, email } = result.user;
             const signedInUser = { name: displayName, email: email };
             setloggedInUser(signedInUser);
+            setUserToken();
             history.replace(from);
         }).catch(function (error) {
             console.log(error.message);

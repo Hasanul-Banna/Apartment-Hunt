@@ -27,6 +27,25 @@ const Home = () => {
                     <span>Hotel Room Rent</span>
                     <h2>Discover The Latest Rent <br /> Available Today</h2>
                 </div>
+                <div className="container d-flex justify-content-around my-5">
+                    <select className="form-select" aria-label="Default select example">
+                        <option selected>Area</option>
+                        <option value="1">Dhaka</option>
+                        <option value="2">Sylhet</option>
+                        <option value="3">Chattagram</option>
+                    </select>
+                    <select className="form-select" aria-label="Default select example">
+                        <option selected>Room Type</option>
+                        <option value="1">Single</option>
+                        <option value="2">Double</option>
+                        <option value="3">Family</option>
+                    </select>
+                    <select className="form-select" aria-label="Default select example">
+                        <option selected>Price</option>
+                        <option value="1">High to Low</option>
+                        <option value="2">Low to High</option>
+                    </select>
+                </div>
                 <div className="container">
                     <div className="row">
                         {
@@ -38,7 +57,7 @@ const Home = () => {
             {/* service */}
             <section className="my-5">
                 <div className="text-center mb-3 theme-text">
-                    <h2>Your Satisfaction <br/> Is Our First & Foremost Priority</h2>
+                    <h2>Your Satisfaction <br /> Is Our First & Foremost Priority</h2>
                 </div>
                 <div className="container">
                     <div className="row">

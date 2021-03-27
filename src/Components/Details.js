@@ -2,19 +2,38 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { apartmentData } from '../fakeData';
 import { useForm } from "react-hook-form";
+import StripeCheckout from 'react-stripe-checkout';
 
 
 const Details = () => {
     const { id } = useParams();
     const CurrentApartment = apartmentData.find(x => x.id === id);
-    // console.log(CurrentApartment);
     const { register, handleSubmit, errors } = useForm();
+
     const onSubmit = data => {
-        console.log(data);
+        const fullData = { ...CurrentApartment, ...data }
+        const url = 'http://localhost:5000/newBooking'
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(fullData),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+            .then((response) => response.json())
+            .then((json) => console.log(''));
+        alert('thanks for booking')
+
+    }
+
+    // const onClosed = () => {
+    //     document.getElementById('submitBtn').disabled = true
+    // }
+    const onOpened = () => {
+        document.getElementById('submitBtn').disabled = false
     }
     return (
         <>
-
             <section className="banner">
                 <div className="layer">
                     <h1>{CurrentApartment.name}</h1>
@@ -29,8 +48,8 @@ const Details = () => {
 
                         <form className="bg-light p-3" onSubmit={handleSubmit(onSubmit)}>
                             <br />
-                            <input type="text" className="form-control" name="name" placeholder="Your name" ref={register({ required: true })} />
-                            {errors.name && <small className="text-danger">This field is required</small>} <br />
+                            <input type="text" className="form-control" name="userName" placeholder="Your name" ref={register({ required: true })} />
+                            {errors.userName && <small className="text-danger">This field is required</small>} <br />
 
                             <input type="text" className="form-control" name="email" placeholder="Email address" ref={register({ required: true })} />
                             {errors.email && <small className="text-danger">This field is required</small>} <br />
@@ -41,8 +60,18 @@ const Details = () => {
                             <textarea className="form-control" rows="4" name="instruction" placeholder="Message..." ref={register({ required: false })}></textarea>
                             {errors.instruction && <small className="text-danger">This field is required</small>}<br />
 
-                            <input className="btn btn-info w-100" type="submit" value="Request booking" />
+                            <input disabled className="btn btn-info w-100" type="submit" value="Request booking" id='submitBtn' />
                         </form>
+                        <div className="d-flex justify-content-between">
+                            <span>Pay first to confirm : </span>
+                            <StripeCheckout
+                                amount={CurrentApartment.price * 100}
+                                currency="BDT"
+                                // closed={onClosed}
+                                opened={onOpened}
+                                stripeKey="pk_test_51IZRWSKMRot2hgd9XemY5rgpL0HFUWREI1HvRZIcUdH1a6m5xbaT8EPLuPe5iKPqNXAqrIw8bfJjwC8rbbq4Sy4400hZjx6lwV"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

@@ -23,6 +23,7 @@ const Login = () => {
                 const newUserInfo = { ...loggedInUser }
                 newUserInfo.name = res.user.displayName;
                 setloggedInUser(newUserInfo);
+                setUserToken();
                 history.replace(from);
                 // console.log('alhamdulillah');
             })
@@ -32,7 +33,13 @@ const Login = () => {
                 setloggedInUser(newUserInfo);
             });
     };
-
+    const setUserToken = () => {
+        firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+          sessionStorage.setItem('token', idToken);
+        }).catch(function(error) {
+          // Handle error
+        });
+      }
 
 
     return (

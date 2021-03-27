@@ -11,11 +11,13 @@ import { useState } from 'react';
 import Login from './Components/Login';
 import SignUp from './Components/SignUp';
 import Navibar from './Components/Navbar';
-import PrivateRoute from './Components/PrivateRoute'; 
+import PrivateRoute from './Components/PrivateRoute';
 import Details from "./Components/Details";
 import AddRent from "./Components/Dashboard/AddRent";
 import BookingList from "./Components/Dashboard/BookingList";
 import MyRent from "./Components/Dashboard/MyRent";
+import MakeAdmin from "./Components/Dashboard/MakeAdmin";
+import UpdateInfo from "./Components/Dashboard/UpdateInfo";
 export const UserContext = createContext();
 
 
@@ -29,24 +31,30 @@ function App() {
           <Route path="/home">
             <Home />
           </Route>
-          <Route path="/Apartment/:id">
+          <PrivateRoute path="/Apartment/:id">
             <Details />
-          </Route>
+          </PrivateRoute>
           <Route path="/login">
             <Login />
           </Route>
           <Route path="/SignUp">
             <SignUp />
           </Route>
-          <Route path="/BookingList">
+          <PrivateRoute path="/BookingList">
             <BookingList />
-          </Route>
-          <Route path="/AddRent">
+          </PrivateRoute>
+          <PrivateRoute path="/AddRent">
             <AddRent />
-          </Route>
-          <Route path="/MyRent">
+          </PrivateRoute>
+          <PrivateRoute path="/MyRent">
             <MyRent />
-          </Route>
+          </PrivateRoute>
+          <PrivateRoute path="/updateInfo">
+            <UpdateInfo />
+          </PrivateRoute>
+          <PrivateRoute path="/makeAdmin">
+            <MakeAdmin />
+          </PrivateRoute>
           <Route path="/">
             <Home />
           </Route>

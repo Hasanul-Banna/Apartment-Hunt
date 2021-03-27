@@ -8,16 +8,16 @@ const PrivateRoute = ({ children, ...rest }) => {
         <Route
             {...rest}
             render={({ location }) =>
-            loggedInUser.name ? (
+                loggedInUser.name || sessionStorage.getItem('token') ? (
                     children
                 ) : (
-                        <Redirect
-                            to={{
-                                pathname: "/login",
-                                state: { from: location }
-                            }}
-                        />
-                    )
+                    <Redirect
+                        to={{
+                            pathname: "/login",
+                            state: { from: location }
+                        }}
+                    />
+                )
             }
         />
     );
