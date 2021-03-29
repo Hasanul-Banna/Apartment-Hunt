@@ -91,19 +91,17 @@ const Details = () => {
                         <span>Bathroom :  {CurrentApartment.bath}</span> <br />
                         <span>Flat Size :  {CurrentApartment.flatSize} Sq-ft.</span> <br />
                         <span> Address :
-                            {CurrentApartment.address.area} ,
-                            #{CurrentApartment.address.street},
-                            {CurrentApartment.address.city}
+                            {CurrentApartment.address}
                         </span>
                     </div>
                     <div className="col-md-3">
                         <h3 className="theme-text">Facilities :</h3>
                         <p>
-                            TV : {CurrentApartment.facilities.TV} <br />
-                            Wifi : {CurrentApartment.facilities.Wifi} <br />
-                            Breakfast : {CurrentApartment.facilities.Breakfast} <br />
-                            Swimming-Pool : {CurrentApartment.facilities.SwimmingPool} <br />
-                            Car-Parking : {CurrentApartment.facilities.Parking}
+                            TV : {CurrentApartment.TV} <br />
+                            Wifi : {CurrentApartment.Wifi} <br />
+                            Breakfast : {CurrentApartment.Breakfast} <br />
+                            Swimming-Pool : {CurrentApartment.SwimmingPool} <br />
+                            Car-Parking : {CurrentApartment.Parking}
                         </p>
                     </div>
                 </div>

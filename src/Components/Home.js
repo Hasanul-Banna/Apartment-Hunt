@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { apartmentData } from '../fakeData';
 import Apartments from './Apartments';
@@ -10,6 +10,31 @@ import { faEnvelope, faMapMarker, faPhone } from '@fortawesome/free-solid-svg-ic
 import { faFacebookSquare, faInstagramSquare, faLinkedin, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 const Home = () => {
+    const [filteredData, setFilteredData] = useState(apartmentData)
+    const handleArea = (e) => {
+        // console.log(e.target.value);
+        const tempData = [...apartmentData]
+        const newTempData = tempData.filter(x => x.location === e.target.value);
+        setFilteredData(newTempData);
+    }
+    const handleRoomType = (e) => {
+        // console.log(e.target.value);
+        const tempData = [...apartmentData]
+        const newTempData = tempData.filter(x => x.RoomType === e.target.value);
+        setFilteredData(newTempData);
+    }
+    const handlePrice = (e) => {
+        if (e.target.value === 'L2H') {
+            const list = [...apartmentData];
+            list.sort((a, b) => (a.price > b.price) ? 1 : -1)
+            setFilteredData(list)
+        }
+        if (e.target.value === 'H2L') {
+            const list = [...apartmentData];
+            list.sort((a, b) => (a.price < b.price) ? 1 : -1)
+            setFilteredData(list);
+        }
+    }
     return (
         <>
             <section className="banner">
@@ -22,34 +47,37 @@ const Home = () => {
                 </div>
             </section>
             {/* apartments */}
-            <section className="">
+            <section id="room">
                 <div className="text-center mt-3 theme-text">
                     <span>Hotel Room Rent</span>
                     <h2>Discover The Latest Rent <br /> Available Today</h2>
                 </div>
                 <div className="container d-flex justify-content-around my-5">
-                    <select className="form-select" aria-label="Default select example">
-                        <option selected>Area</option>
-                        <option value="1">Dhaka</option>
-                        <option value="2">Sylhet</option>
-                        <option value="3">Chattagram</option>
-                    </select>
-                    <select className="form-select" aria-label="Default select example">
-                        <option selected>Room Type</option>
-                        <option value="1">Single</option>
-                        <option value="2">Double</option>
-                        <option value="3">Family</option>
-                    </select>
-                    <select className="form-select" aria-label="Default select example">
-                        <option selected>Price</option>
-                        <option value="1">High to Low</option>
-                        <option value="2">Low to High</option>
-                    </select>
+                    <div ><span>Area</span> :
+                    <select onChange={handleArea} className="form-control" >
+                            <option value="Dhaka">Dhaka</option>
+                            <option value="Sylhet">Sylhet</option>
+                            <option value="Chattagram">Chattagram</option>
+                        </select>
+                    </div>
+                    <div><span>Room type</span> :
+                    <select onChange={handleRoomType} className="form-control" >
+                            <option value="Single">Single</option>
+                            <option value="Double">Double</option>
+                            <option value="Family">Family</option>
+                        </select>
+                    </div>
+                    <div><span>Price</span> :
+                    <select onChange={handlePrice} className="form-control" >
+                            <option value="L2H">Low to High</option>
+                            <option value="H2L">High to Low</option>
+                        </select>
+                    </div>
                 </div>
                 <div className="container">
                     <div className="row">
                         {
-                            apartmentData.map(apartment => <Apartments key={apartment.id} apartment={apartment}></Apartments>)
+                            filteredData.map(apartment => <Apartments key={apartment.id} apartment={apartment}></Apartments>)
                         }
                     </div>
                 </div>
@@ -79,7 +107,7 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            <footer>
+            <footer id="contact">
                 <div className="container pt-5 pb-3">
                     <div className="row">
                         <div className="col-md-5">

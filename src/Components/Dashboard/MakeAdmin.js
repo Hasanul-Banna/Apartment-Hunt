@@ -17,7 +17,6 @@ const MakeAdmin = () => {
                             <input className="btn btn-info w-50" type="submit" value="Make Admin"/>
                             </div>
                         </div> 
-                        
                     </div>
                 </div>
             </div>

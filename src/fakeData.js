@@ -9,18 +9,13 @@ export const apartmentData = [
         bath: 1,
         price: 3000,
         flatSize: 1500,
-        address: {
-            area: 'Dhanmandi',
-            street: '27',
-            city: 'Dhaka',
-        },
-        facilities: {
-            TV: 'No',
-            Wifi: 'Yes',
-            Breakfast: 'Yes',
-            SwimmingPool: 'No',
-            Parking: 'No'
-        }
+        address: 'Dhanmandi 27 Dhaka',
+        TV: 'No',
+        Wifi: 'Yes',
+        Breakfast: 'Yes',
+        SwimmingPool: 'No',
+        Parking: 'No'
+
     },
     {
         id: '102',
@@ -32,18 +27,12 @@ export const apartmentData = [
         bath: 1,
         price: 4000,
         flatSize: 1800,
-        address: {
-            area: 'Mirpur',
-            street: '10',
-            city: 'Dhaka',
-        },
-        facilities: {
-            TV: 'Yes',
-            Wifi: 'Yes',
-            Breakfast: 'Yes',
-            SwimmingPool: 'No',
-            Parking: 'No'
-        }
+        address: 'Mirpur 10 Dhaka',
+        TV: 'Yes',
+        Wifi: 'Yes',
+        Breakfast: 'Yes',
+        SwimmingPool: 'No',
+        Parking: 'No'
     },
     {
         id: '103',
@@ -55,18 +44,12 @@ export const apartmentData = [
         bath: 1,
         price: 5000,
         flatSize: 2000,
-        address: {
-            area: 'Zindabazar',
-            street: '2',
-            city: 'Sylhet',
-        },
-        facilities: {
-            TV: 'Yes',
-            Wifi: 'Yes',
-            Breakfast: 'Yes',
-            SwimmingPool: 'Yes',
-            Parking: 'No'
-        }
+        address: 'Zindabazar 22 Sylhet',
+        TV: 'Yes',
+        Wifi: 'Yes',
+        Breakfast: 'Yes',
+        SwimmingPool: 'Yes',
+        Parking: 'No'
     },
     {
         id: '104',
@@ -78,18 +61,12 @@ export const apartmentData = [
         bath: 1,
         price: 5500,
         flatSize: 2000,
-        address: {
-            area: 'GEC More',
-            street: '5',
-            city: 'Chattagram',
-        },
-        facilities: {
-            TV: 'Yes',
-            Wifi: 'Yes',
-            Breakfast: 'Yes',
-            SwimmingPool: 'Yes',
-            Parking: 'Yes'
-        }
+        address: 'GEC More 15 Chattagram',
+        TV: 'Yes',
+        Wifi: 'Yes',
+        Breakfast: 'Yes',
+        SwimmingPool: 'Yes',
+        Parking: 'Yes'
     },
     {
         id: '105',
@@ -101,18 +78,12 @@ export const apartmentData = [
         bath: 1,
         price: 5000,
         flatSize: 2000,
-        address: {
-            area: 'Dhanmandi',
-            street: '27',
-            city: 'Dhaka',
-        },
-        facilities: {
-            TV: 'No',
-            Wifi: 'Yes',
-            Breakfast: 'Yes',
-            SwimmingPool: 'No',
-            Parking: 'No'
-        }
+        address: 'Dhanmandi 15 Dhaka',
+        TV: 'No',
+        Wifi: 'Yes',
+        Breakfast: 'Yes',
+        SwimmingPool: 'No',
+        Parking: 'No'
     },
     {
         id: '106',
@@ -124,18 +95,12 @@ export const apartmentData = [
         bath: 1,
         price: 6000,
         flatSize: 2000,
-        address: {
-            area: 'Mirpur',
-            street: '14',
-            city: 'Dhaka',
-        },
-        facilities: {
-            TV: 'Yes',
-            Wifi: 'Yes',
-            Breakfast: 'Yes',
-            SwimmingPool: 'No',
-            Parking: 'No'
-        }
+        address: 'Mirpur 14 Dhaka',
+        TV: 'Yes',
+        Wifi: 'Yes',
+        Breakfast: 'Yes',
+        SwimmingPool: 'No',
+        Parking: 'No'
     },
     {
         id: '107',
@@ -147,18 +112,12 @@ export const apartmentData = [
         bath: 2,
         price: 6500,
         flatSize: 2200,
-        address: {
-            area: 'Noyasarak',
-            street: '3',
-            city: 'Sylhet',
-        },
-        facilities: {
-            TV: 'Yes',
-            Wifi: 'Yes',
-            Breakfast: 'Yes',
-            SwimmingPool: 'Yes',
-            Parking: 'No'
-        }
+        address: 'Noyasarak 13 Sylhet',
+        TV: 'Yes',
+        Wifi: 'Yes',
+        Breakfast: 'Yes',
+        SwimmingPool: 'Yes',
+        Parking: 'No'
     },
     {
         id: '108',
@@ -170,18 +129,12 @@ export const apartmentData = [
         bath: 2,
         price: 6700,
         flatSize: 2200,
-        address: {
-            area: 'Noyasarak',
-            street: '5',
-            city: 'Chattagram',
-        },
-        facilities: {
-            TV: 'Yes',
-            Wifi: 'Yes',
-            Breakfast: 'Yes',
-            SwimmingPool: 'Yes',
-            Parking: 'Yes'
-        }
+        address: 'Noyasarak 12 Chattagram',
+        TV: 'Yes',
+        Wifi: 'Yes',
+        Breakfast: 'Yes',
+        SwimmingPool: 'Yes',
+        Parking: 'Yes'
     },
     {
         id: '109',
@@ -193,18 +146,12 @@ export const apartmentData = [
         bath: 2,
         price: 8500,
         flatSize: 4000,
-        address: {
-            area: 'Dhanmandi',
-            street: '27',
-            city: 'Dhaka',
-        },
-        facilities: {
-            TV: 'Yes',
-            Wifi: 'Yes',
-            Breakfast: 'No',
-            SwimmingPool: 'No',
-            Parking: 'No'
-        }
+        address: 'Dhanmandi 27 Dhaka',
+        TV: 'Yes',
+        Wifi: 'Yes',
+        Breakfast: 'No',
+        SwimmingPool: 'No',
+        Parking: 'No'
     },
     {
         id: '110',
@@ -216,18 +163,13 @@ export const apartmentData = [
         bath: 2,
         price: 8800,
         flatSize: 4400,
-        address: {
-            area: 'Dhanmandi',
-            street: '27',
-            city: 'Dhaka',
-        },
-        facilities: {
-            TV: 'Yes',
-            Wifi: 'Yes',
-            Breakfast: 'Yes',
-            SwimmingPool: 'No',
-            Parking: 'No'
-        }
+        address: 'Dhanmandi 27 Dhaka',
+        TV: 'Yes',
+        Wifi: 'Yes',
+        Breakfast: 'Yes',
+        SwimmingPool: 'No',
+        Parking: 'No'
+
     },
     {
         id: '111',
@@ -239,18 +181,12 @@ export const apartmentData = [
         bath: 3,
         price: 9500,
         flatSize: 4600,
-        address: {
-            area: 'Zindabazar',
-            street: '7',
-            city: 'Sylhet',
-        },
-        facilities: {
-            TV: 'Yes',
-            Wifi: 'Yes',
-            Breakfast: 'Yes',
-            SwimmingPool: 'Yes',
-            Parking: 'No'
-        }
+        address: 'Zindabazar 2 Sylhet',
+        TV: 'Yes',
+        Wifi: 'Yes',
+        Breakfast: 'Yes',
+        SwimmingPool: 'Yes',
+        Parking: 'No'
     },
     {
         id: '112',
@@ -262,17 +198,12 @@ export const apartmentData = [
         bath: 3,
         price: 10000,
         flatSize: 5000,
-        address: {
-            area: '2nd gate',
-            street: '2',
-            city: 'Chattagram',
-        },
-        facilities: {
-            TV: 'Yes',
-            Wifi: 'Yes',
-            Breakfast: 'Yes',
-            SwimmingPool: 'Yes',
-            Parking: 'Yes'
-        }
+        address: '2nd gate Chattagram',
+        TV: 'Yes',
+        Wifi: 'Yes',
+        Breakfast: 'Yes',
+        SwimmingPool: 'Yes',
+        Parking: 'Yes'
+
     }
 ];

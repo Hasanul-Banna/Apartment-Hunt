@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { UserContext } from '../../App';
 import Sidebar from './Sidebar';
 
 const MyRent = () => {
+    const [loggedInUser, setloggedInUser] = useContext(UserContext);
+    const [bookings, setBookings] = useState([]);
+    useEffect(() => {
+        const url = 'http://localhost:5000/myBookings?email=' + loggedInUser.email ;
+        fetch(url ).then(res => res.json()).then(data => setBookings(data))
+    }, []);
+
     return (
         <div className="container-fluid">
             <div className="row">
@@ -13,18 +21,25 @@ const MyRent = () => {
                         <thead>
                             <tr>
                                 <th scope="col">Name</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Contact</th>
+                                <th scope="col">Room type</th>
+                                <th scope="col">Location</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>Steve jobless</td>
-                                <td>BDT 25000/-</td>
-                                <td> <button className="btn btn-info">View details</button> </td>
-                            </tr>
+                        {
+                            bookings.map((x) =>
+                                <tbody>
+                                    <tr>
+                                        <td>{x.userName}</td>
+                                        <td>{x.email}</td>
+                                        <td>{x.mobile}</td>
+                                        <td>{x.RoomType}</td>
+                                        <td>{x.location}</td>
+                                    </tr>
+                                </tbody>)
+                        }
 
-                        </tbody>
                     </table>
                 </div>
             </div>

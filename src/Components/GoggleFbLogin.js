@@ -27,7 +27,7 @@ const GoggleFbLogin = () => {
         const provider = new firebase.auth.FacebookAuthProvider();
         firebase.auth().signInWithPopup(provider)
             .then(function (result) {
-                var token = result.credential.accessToken;
+                // var token = result.credential.accessToken;
                 const { displayName, email } = result.user;
                 const signedInUser = { name: displayName, email: email };
                 setloggedInUser(signedInUser);
@@ -43,7 +43,7 @@ const GoggleFbLogin = () => {
     const handleGoogleSignIn = () => {
         const fbprovider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(fbprovider).then(function (result) {
-            var token = result.credential.accessToken;
+            // var token = result.credential.accessToken;
             const { displayName, email } = result.user;
             const signedInUser = { name: displayName, email: email };
             setloggedInUser(signedInUser);

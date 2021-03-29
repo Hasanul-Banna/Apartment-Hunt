@@ -16,13 +16,8 @@ const Navibar = () => {
                     <Link className="nav-link" to="/">About</Link>
                     <Link className="nav-link" to="/">Contact</Link>
                     <Link className="nav-link" to="/MyRent">Dashboard</Link>
-                    {/* <Nav.Link href="/home">Home</Nav.Link>
-                    <Nav.Link href="/">About</Nav.Link>
-                    <Nav.Link href="/">Service</Nav.Link>
-                    <Nav.Link href="/MyRent">Dashboard</Nav.Link>
-                    <Nav.Link href="/">Contact</Nav.Link> */}
-                    {!loggedInUser.name && <Link to="/Login"> <Button className="btn" variant="info">Log in</Button></Link>}
-                    {loggedInUser.name && <Button className="btn" variant="info" onClick={() => setloggedInUser('')} >Log Out</Button>}
+                    {!loggedInUser.email && <Link to="/Login"> <Button className="btn" variant="info">Log in</Button></Link>}
+                    {loggedInUser.email && <Button className="btn" variant="info" onClick={() => setloggedInUser('')} >Log Out</Button>}
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
