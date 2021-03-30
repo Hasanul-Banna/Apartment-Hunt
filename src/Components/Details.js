@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { apartmentData } from '../fakeData';
 import { useForm } from "react-hook-form";
 import StripeCheckout from 'react-stripe-checkout';
+import loader from '../images/icons/loader.gif'
 
 
 const Details = () => {
+    const [hotelData, setHotelData] = useState([]);
     const { id } = useParams();
-    const CurrentApartment = apartmentData.find(x => x.id === id);
+    useEffect(() => {
+        const url = 'http://localhost:5000/HotelData'
+        fetch(url).then(res => res.json()).then(data => setHotelData(data))
+    }, []);
+    const CurrentApartment = hotelData.find(x => x.id === id);
     const { register, handleSubmit, errors } = useForm();
 
     const onSubmit = data => {
@@ -34,15 +40,15 @@ const Details = () => {
     }
     return (
         <>
-            <section className="banner">
+            {hotelData.length && <section className="banner">
                 <div className="layer">
                     <h1>{CurrentApartment.name}</h1>
                 </div>
-            </section>
-            <div className="container ">
+            </section>}
+            {hotelData.length && <div className="container ">
                 <div className="row">
                     <div className="col-md-7">
-                        <img src={CurrentApartment.photo} className="w-100 m-2" alt="" />
+                        <img src={`data:image/png;base64,${CurrentApartment.image.img}`} className="w-100 m-2" alt="" />
                     </div>
                     <div className="col-md-5 ">
 
@@ -74,9 +80,9 @@ const Details = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>}
 
-            <div className="container my-5">
+            {hotelData.length && <div className="container my-5">
                 <h2>{CurrentApartment.name}</h2>
                 <div className="row">
                     <div className="col-md-6">
@@ -90,8 +96,7 @@ const Details = () => {
                         <span>Bed :  {CurrentApartment.bed}</span> <br />
                         <span>Bathroom :  {CurrentApartment.bath}</span> <br />
                         <span>Flat Size :  {CurrentApartment.flatSize} Sq-ft.</span> <br />
-                        <span> Address :
-                            {CurrentApartment.address}
+                        <span> Address : {CurrentApartment.address}
                         </span>
                     </div>
                     <div className="col-md-3">
@@ -105,9 +110,11 @@ const Details = () => {
                         </p>
                     </div>
                 </div>
-            </div>
+            </div>}
+            {!hotelData.length &&
+                <img style={{ margin: 'auto' }} src={loader} alt="" />
+            }
         </>
-
     );
 };
 

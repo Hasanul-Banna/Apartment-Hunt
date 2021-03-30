@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { apartmentData } from '../fakeData';
 import Apartments from './Apartments';
@@ -8,29 +8,45 @@ import service3 from '../images/icons/lessee 1.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faMapMarker, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookSquare, faInstagramSquare, faLinkedin, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import loader from '../images/icons/loader.gif'
 
 const Home = () => {
-    const [filteredData, setFilteredData] = useState(apartmentData)
+    const [Hotel, setHotel] = useState([])
+    useEffect(() => {
+        const url = 'http://localhost:5000/HotelData'
+        fetch(url).then(res => res.json()).then(data => { setFilteredData(data); setHotel(data) })
+    }, []);
+    const [filteredData, setFilteredData] = useState([]);
     const handleArea = (e) => {
         // console.log(e.target.value);
-        const tempData = [...apartmentData]
+        const tempData = [...filteredData]
         const newTempData = tempData.filter(x => x.location === e.target.value);
-        setFilteredData(newTempData);
+        if (e.target.value === 'All') {
+            const hotels = [...Hotel]
+            setFilteredData(hotels);
+        } else {
+            setFilteredData(newTempData);
+        }
     }
     const handleRoomType = (e) => {
         // console.log(e.target.value);
-        const tempData = [...apartmentData]
+        const tempData = [...filteredData]
         const newTempData = tempData.filter(x => x.RoomType === e.target.value);
-        setFilteredData(newTempData);
+        if (e.target.value === 'All') {
+            const hotels = [...Hotel]
+            setFilteredData(hotels);
+        } else {
+            setFilteredData(newTempData);
+        }
     }
     const handlePrice = (e) => {
         if (e.target.value === 'L2H') {
-            const list = [...apartmentData];
+            const list = [...filteredData];
             list.sort((a, b) => (a.price > b.price) ? 1 : -1)
             setFilteredData(list)
         }
         if (e.target.value === 'H2L') {
-            const list = [...apartmentData];
+            const list = [...filteredData];
             list.sort((a, b) => (a.price < b.price) ? 1 : -1)
             setFilteredData(list);
         }
@@ -55,6 +71,7 @@ const Home = () => {
                 <div className="container d-flex justify-content-around my-5">
                     <div ><span>Area</span> :
                     <select onChange={handleArea} className="form-control" >
+                            <option value="All">All</option>
                             <option value="Dhaka">Dhaka</option>
                             <option value="Sylhet">Sylhet</option>
                             <option value="Chattagram">Chattagram</option>
@@ -62,6 +79,7 @@ const Home = () => {
                     </div>
                     <div><span>Room type</span> :
                     <select onChange={handleRoomType} className="form-control" >
+                            <option value="All">All</option>
                             <option value="Single">Single</option>
                             <option value="Double">Double</option>
                             <option value="Family">Family</option>

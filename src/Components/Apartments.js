@@ -8,7 +8,7 @@ const Apartments = ({ apartment }) => {
     // console.log(apartment);
     return (
         <div className="col-md-4 p-3 ">
-            <img className="w-100" src={apartment.photo} alt="" />
+            <img style={{height:'210px'}} className="w-100" src={`data:image/png;base64,${apartment.image.img}`}  alt="" />
             <div className="bg-white p-3">
                 <h5 className="theme-text">{apartment.name}</h5>
                 <small><FontAwesomeIcon icon={faMapMarkerAlt} /> {apartment.location}</small>
