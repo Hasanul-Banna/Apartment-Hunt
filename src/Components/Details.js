@@ -73,18 +73,17 @@ const Details = () => {
                             {errors.userName && <small className="text-danger">This field is required</small>} <br />
 
                             <input type="text" className="form-control" name="email" placeholder="Email address" ref={register({ required: true })} />
-                            {errors.email && <small className="text-danger">This field is required</small>} <br />
+                            {errors.email && <small className="text-danger">This field is required</small>} <br /> 
 
                             <input type="text" className="form-control" name="mobile" placeholder="Phone number" ref={register({ required: true })} />
-                            {errors.mobile && <small className="text-danger">This field is required</small>}<br />
+                            {errors.mobile && <small className="text-danger">This field is required</small>}
                             <small>Check In:</small>
                             <input type="date" className="form-control" name="CheckIN" ref={register({ required: true })} />
-                            {errors.CheckIN && <small className="text-danger">This field is required</small>}  <br />
+                            {errors.CheckIN && <small className="text-danger">This field is required</small>} 
                             <small>Check Out:</small>
 
                             <input type="date" className="form-control" name="CheckOUT" ref={register({ required: true })} />
                             {errors.CheckOUT && <small className="text-danger">This field is required</small>}  <br />
-
 
                             <textarea className="form-control" rows="4" name="instruction" placeholder="Message..." ref={register({ required: false })}></textarea>
                             {errors.instruction && <small className="text-danger">This field is required</small>}<br />

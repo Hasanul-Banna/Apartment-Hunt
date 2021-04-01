@@ -7,7 +7,7 @@ const Navibar = () => {
     const [loggedInUser, setloggedInUser] = useContext(UserContext);
     return (
         <Navbar className="px-md-5 navi" bg="transparent" expand="lg">
-            <Navbar.Brand href="#home"><img src={logo} alt="" /></Navbar.Brand>
+            <Navbar.Brand ><Link to="/home"><img src={logo} alt="Logo" /></Link></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto ">

@@ -58,7 +58,7 @@ const Home = () => {
                     <h1>FIND YOUR HOTEL ROOM</h1>
                     <br />
                     <div >
-                        <Button className="btn" variant="info" size="lg">Find Now</Button>
+                        <a className="btn btn-lg btn-info" href="#room">Find Now</a>
                     </div>
                 </div>
             </section>
