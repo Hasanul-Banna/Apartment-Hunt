@@ -13,13 +13,13 @@ import loader from '../images/icons/loader.gif'
 const Home = () => {
     const [Hotel, setHotel] = useState([])
     useEffect(() => {
-        const url = 'http://localhost:5000/HotelData'
+        const url = 'https://still-waters-21873.herokuapp.com/HotelData'
         fetch(url).then(res => res.json()).then(data => { setFilteredData(data); setHotel(data) })
     }, []);
     const [filteredData, setFilteredData] = useState([]);
     const handleArea = (e) => {
         // console.log(e.target.value);
-        const tempData = [...filteredData]
+        const tempData = [...Hotel]
         const newTempData = tempData.filter(x => x.location === e.target.value);
         if (e.target.value === 'All') {
             const hotels = [...Hotel]
@@ -30,7 +30,7 @@ const Home = () => {
     }
     const handleRoomType = (e) => {
         // console.log(e.target.value);
-        const tempData = [...filteredData]
+        const tempData = [...Hotel]
         const newTempData = tempData.filter(x => x.RoomType === e.target.value);
         if (e.target.value === 'All') {
             const hotels = [...Hotel]
@@ -41,12 +41,12 @@ const Home = () => {
     }
     const handlePrice = (e) => {
         if (e.target.value === 'L2H') {
-            const list = [...filteredData];
+            const list = [...Hotel];
             list.sort((a, b) => (a.price > b.price) ? 1 : -1)
             setFilteredData(list)
         }
         if (e.target.value === 'H2L') {
-            const list = [...filteredData];
+            const list = [...Hotel];
             list.sort((a, b) => (a.price < b.price) ? 1 : -1)
             setFilteredData(list);
         }

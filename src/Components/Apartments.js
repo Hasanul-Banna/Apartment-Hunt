@@ -19,10 +19,13 @@ const Apartments = ({ apartment }) => {
                 <div className="d-flex justify-content-between mt-2">
                     <span className="price">BDT {apartment.price}/-</span>
                     <Link to={`/Apartment/${apartment.id}`}>
-                        <Button className="btn" variant="info">View Details</Button>
+                        <Button className="btn" variant="info">Book Now</Button>
                     </Link>
-
                 </div>
+                <Link to={`/updateInfo/${apartment.id}`}>
+                <button className="btn-Warning" >Update Price</button>
+                </Link>
+                <button className="btn-Danger float-right" >Delete</button>
             </div>
         </div>
     );

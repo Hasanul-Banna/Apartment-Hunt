@@ -1,11 +1,15 @@
 import React from 'react';
+import { useParams } from 'react-router';
 import Sidebar from './Sidebar';
 const UpdateInfo = () => {
+    const { RoomID } = useParams();
+
     return (
         <div className="container-fluid">
             <div className="row">
                 <div className="col-md-2">
-                    <Sidebar />
+                    {/* <Sidebar /> */}
+                    <small>{RoomID}</small>
                 </div>
                 <div className="col-md-10">
                     <div className="container">

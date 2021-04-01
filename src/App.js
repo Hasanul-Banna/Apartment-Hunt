@@ -49,7 +49,7 @@ function App() {
           <PrivateRoute path="/MyRent">
             <MyRent />
           </PrivateRoute>
-          <PrivateRoute path="/updateInfo">
+          <PrivateRoute path="/updateInfo/:RoomID">
             <UpdateInfo />
           </PrivateRoute>
           <PrivateRoute path="/makeAdmin">

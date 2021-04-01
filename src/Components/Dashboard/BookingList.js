@@ -4,10 +4,10 @@ import Sidebar from './Sidebar';
 const BookingList = () => {
     const [bookings, setBookings] = useState([]);
     useEffect(() => {
-        const url = 'http://localhost:5000/bookings'
+        const url = 'https://still-waters-21873.herokuapp.com/bookings'
         fetch(url).then(res => res.json()).then(data => setBookings(data))
     }, []);
-    
+
     return (
         <div className="container-fluid">
             <div className="row">
@@ -20,20 +20,24 @@ const BookingList = () => {
                             <tr>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Contact</th>
-                                <th scope="col">Room type</th>
-                                <th scope="col">Location</th>
+                                <th scope="col">Mobile</th>
+                                <th scope="col">Room</th>
+                                <th scope="col">Check In</th>
+                                <th scope="col">Check Out</th>
+
+
                             </tr>
                         </thead>
                         {
-                            bookings.map((x) =>
-                                <tbody>
+                            bookings.map((x, y) =>
+                                <tbody key={y}>
                                     <tr>
                                         <td>{x.userName}</td>
                                         <td>{x.email}</td>
                                         <td>{x.mobile}</td>
-                                        <td>{x.RoomType}</td>
-                                        <td>{x.location}</td>
+                                        <td>{x.name}</td>
+                                        <td>{x.CheckIN}</td>
+                                        <td>{x.CheckOUT}</td>
                                     </tr>
                                 </tbody>)
                         }

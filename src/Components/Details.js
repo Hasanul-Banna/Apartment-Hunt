@@ -7,37 +7,52 @@ import loader from '../images/icons/loader.gif'
 
 
 const Details = () => {
+    const [dayCount, setDayCount] = useState(1);
+    const [stripeBtn, setstripeBtn] = useState(false);
+
     const [hotelData, setHotelData] = useState([]);
     const { id } = useParams();
     useEffect(() => {
-        const url = 'http://localhost:5000/HotelData'
+        const url = 'https://still-waters-21873.herokuapp.com/HotelData'
         fetch(url).then(res => res.json()).then(data => setHotelData(data))
     }, []);
     const CurrentApartment = hotelData.find(x => x.id === id);
     const { register, handleSubmit, errors } = useForm();
 
-    const onSubmit = data => {
-        const fullData = { ...CurrentApartment, ...data }
-        const url = 'http://localhost:5000/newBooking'
-        fetch(url, {
+    const onSubmit = (data) => {
+        const date1 = new Date(data.CheckIN);
+        const date2 = new Date(data.CheckOUT);
+        const diffTime = Math.abs(date2 - date1);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        setDayCount(diffDays + 1);
+        setstripeBtn(true);
+
+        const formData = new FormData()
+        formData.append('name', CurrentApartment.name);
+        formData.append('userName', data.userName);
+        formData.append('email', data.email);
+        formData.append('mobile', data.mobile);
+        formData.append('CheckIN', data.CheckIN);
+        formData.append('CheckOUT', data.CheckOUT);
+
+        fetch('https://still-waters-21873.herokuapp.com/newBooking', {
             method: 'POST',
-            body: JSON.stringify(fullData),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
+            body: formData
         })
-            .then((response) => response.json())
-            .then((json) => console.log(''));
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+            })
+            .catch(error => {
+                console.error(error)
+            })
+        // data.preventDefault();
         alert('thanks for booking')
 
     }
 
-    // const onClosed = () => {
-    //     document.getElementById('submitBtn').disabled = true
-    // }
-    const onOpened = () => {
-        document.getElementById('submitBtn').disabled = false
-    }
+    // const onClosed = () => {       document.getElementById('submitBtn').disabled = true   }
+    // const onOpened = () => {        document.getElementById('submitBtn').disabled = false    }
     return (
         <>
             {hotelData.length && <section className="banner">
@@ -62,21 +77,27 @@ const Details = () => {
 
                             <input type="text" className="form-control" name="mobile" placeholder="Phone number" ref={register({ required: true })} />
                             {errors.mobile && <small className="text-danger">This field is required</small>}<br />
+                            <small>Check In:</small>
+                            <input type="date" className="form-control" name="CheckIN" ref={register({ required: true })} />
+                            {errors.CheckIN && <small className="text-danger">This field is required</small>}  <br />
+                            <small>Check Out:</small>
+
+                            <input type="date" className="form-control" name="CheckOUT" ref={register({ required: true })} />
+                            {errors.CheckOUT && <small className="text-danger">This field is required</small>}  <br />
+
 
                             <textarea className="form-control" rows="4" name="instruction" placeholder="Message..." ref={register({ required: false })}></textarea>
                             {errors.instruction && <small className="text-danger">This field is required</small>}<br />
 
-                            <input disabled className="btn btn-info w-100" type="submit" value="Request booking" id='submitBtn' />
+                            <input className="btn btn-info w-100" type="submit" value="Request booking" id='submitBtn' />
                         </form>
                         <div className="d-flex justify-content-between">
-                            <span>Pay first to confirm : </span>
-                            <StripeCheckout
-                                amount={CurrentApartment.price * 100}
+                            {/* <span>Pay first to confirm : </span> */}
+                            {stripeBtn && <StripeCheckout
+                                amount={CurrentApartment.price * 100 * dayCount}
                                 currency="BDT"
-                                // closed={onClosed}
-                                opened={onOpened}
                                 stripeKey="pk_test_51IZRWSKMRot2hgd9XemY5rgpL0HFUWREI1HvRZIcUdH1a6m5xbaT8EPLuPe5iKPqNXAqrIw8bfJjwC8rbbq4Sy4400hZjx6lwV"
-                            />
+                            />}
                         </div>
                     </div>
                 </div>

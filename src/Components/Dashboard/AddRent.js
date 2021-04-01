@@ -14,7 +14,7 @@ const AddRent = () => {
         newInfo[e.target.name] = e.target.value;
         setRoomInfo(newInfo);
     }
-                
+
     const handleSubmit = (event) => {
         const formData = new FormData()
         formData.append('file', file);
@@ -33,7 +33,7 @@ const AddRent = () => {
         formData.append('SwimmingPool', roomInfo.SwimmingPool);
         formData.append('Parking', roomInfo.Parking);
 
-        fetch('http://localhost:5000/addRoom', {
+        fetch('https://still-waters-21873.herokuapp.com/addRoom', {
             method: 'POST',
             body: formData
         })
@@ -44,6 +44,7 @@ const AddRent = () => {
             .catch(error => {
                 console.error(error)
             })
+        alert('Room added successfully!')
         event.preventDefault();
     }
     return (
@@ -58,9 +59,9 @@ const AddRent = () => {
                             <div className="col-md-6">
                                 <div className="form-group">
                                     <label htmlFor="id">Room Id</label>
-                                    <input onBlur={handleBlur} type="text" className="form-control" name="id" id="id" placeholder="Unique Id" required />
+                                    <input value={Date.now()} onBlur={handleBlur} type="text" className="form-control" name="id" id="id" placeholder="Unique Id" required />
                                     <label htmlFor="name">Room title</label>
-                                    <input onBlur={handleBlur} type="text" className="form-control" name="name" id="name" placeholder="Family Delux" required />
+                                    <input onBlur={handleBlur} type="text" className="form-control" name="name" id="name" placeholder="Single standard/Family Delux/Double" required />
                                     <label htmlFor="address">Address</label>
                                     <input onBlur={handleBlur} type="text" className="form-control" name="address" id="address" placeholder="Mirpur 10 Dhaka" required />
                                     <label htmlFor="bed">Bed</label>

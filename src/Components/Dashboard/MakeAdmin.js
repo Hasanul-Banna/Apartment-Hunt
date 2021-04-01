@@ -1,14 +1,14 @@
-import React ,{useState} from 'react';
+import React, { useState } from 'react';
 import Sidebar from './Sidebar';
 const MakeAdmin = () => {
-    const [adminEmail,setAdminEmail] = useState('')
-    const handleInput =(e)=>{
+    const [adminEmail, setAdminEmail] = useState('')
+    const handleInput = (e) => {
         setAdminEmail(e.target.value)
     }
-    const handleSubmit=(e)=>{
+    const handleSubmit = (e) => {
         const formData = new FormData()
         formData.append('email', adminEmail);
-        fetch('http://localhost:5000/makeAdmin', {
+        fetch('https://still-waters-21873.herokuapp.com/makeAdmin', {
             method: 'POST',
             body: formData
         })
@@ -20,6 +20,8 @@ const MakeAdmin = () => {
                 console.error(error)
             })
         e.preventDefault();
+        alert('Admin added successfully!')
+
     }
     return (
         <div className="container-fluid">
@@ -31,12 +33,12 @@ const MakeAdmin = () => {
                     <div className="container">
                         <form className="row" onSubmit={handleSubmit}>
                             <div className="col-md-8">
-                                <input onChange={handleInput} type="text" className="form-control" placeholder="New Admin's Email Address"/>
+                                <input onChange={handleInput} type="text" className="form-control" placeholder="New Admin's Email Address" />
                             </div>
                             <div className="col-md-4">
-                            <input className="btn btn-info w-50" type="submit" value="Make Admin"/>
+                                <input className="btn btn-info w-50" type="submit" value="Make Admin" />
                             </div>
-                        </form> 
+                        </form>
                     </div>
                 </div>
             </div>
