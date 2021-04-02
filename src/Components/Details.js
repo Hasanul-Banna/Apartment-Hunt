@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { apartmentData } from '../fakeData';
+// import { apartmentData } from '../fakeData';
 import { useForm } from "react-hook-form";
 import StripeCheckout from 'react-stripe-checkout';
-import loader from '../images/icons/loader.gif'
+import loader from '../images/icons/loader.gif';
 
 
 const Details = () => {

@@ -12,9 +12,9 @@ const Navibar = () => {
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto ">
                     <Link className="nav-link" to="/home">Home</Link>
-                    <Link className="nav-link" to="/">Rooms</Link>
-                    <Link className="nav-link" to="/">About</Link>
-                    <Link className="nav-link" to="/">Contact</Link>
+                    {/* <Link className="nav-link" to="/">Rooms</Link> */}
+                    <Link className="nav-link" to="/About">About</Link>
+                    <Link className="nav-link" to="/Contact">Contact</Link>
                     <Link className="nav-link" to="/MyRent">Dashboard</Link>
                     {!loggedInUser.email && <Link to="/Login"> <Button className="btn" variant="info">Log in</Button></Link>}
                     {loggedInUser.email && <Button className="btn" variant="info" onClick={() => setloggedInUser('')} >Log Out</Button>}

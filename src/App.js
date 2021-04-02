@@ -18,6 +18,8 @@ import BookingList from "./Components/Dashboard/BookingList";
 import MyRent from "./Components/Dashboard/MyRent";
 import MakeAdmin from "./Components/Dashboard/MakeAdmin";
 import UpdateInfo from "./Components/Dashboard/UpdateInfo";
+import Contact from "./Components/Dashboard/Contact";
+import About from "./Components/Dashboard/About";
 export const UserContext = createContext();
 
 
@@ -30,6 +32,12 @@ function App() {
         <Switch>
           <Route path="/home">
             <Home />
+          </Route>
+          <Route path="/About">
+            <About />
+          </Route>
+          <Route path="/Contact">
+            <Contact />
           </Route>
           <PrivateRoute path="/Apartment/:id">
             <Details />
