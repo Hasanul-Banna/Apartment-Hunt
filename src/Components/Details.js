@@ -47,7 +47,7 @@ const Details = () => {
                 console.error(error)
             })
         // data.preventDefault();
-        alert('thanks for booking')
+        alert(`You booked ${CurrentApartment.name} for ${dayCount} days`)
 
     }
 
@@ -73,13 +73,13 @@ const Details = () => {
                             {errors.userName && <small className="text-danger">This field is required</small>} <br />
 
                             <input type="text" className="form-control" name="email" placeholder="Email address" ref={register({ required: true })} />
-                            {errors.email && <small className="text-danger">This field is required</small>} <br /> 
+                            {errors.email && <small className="text-danger">This field is required</small>} <br />
 
                             <input type="text" className="form-control" name="mobile" placeholder="Phone number" ref={register({ required: true })} />
                             {errors.mobile && <small className="text-danger">This field is required</small>}
                             <small>Check In:</small>
                             <input type="date" className="form-control" name="CheckIN" ref={register({ required: true })} />
-                            {errors.CheckIN && <small className="text-danger">This field is required</small>} 
+                            {errors.CheckIN && <small className="text-danger">This field is required</small>}
                             <small>Check Out:</small>
 
                             <input type="date" className="form-control" name="CheckOUT" ref={register({ required: true })} />

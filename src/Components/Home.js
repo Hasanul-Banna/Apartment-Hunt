@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
-import { apartmentData } from '../fakeData';
 import Apartments from './Apartments';
 import service1 from '../images/icons/apartment 1.png';
 import service2 from '../images/icons/affordable 1.png';
@@ -51,6 +49,17 @@ const Home = () => {
             setFilteredData(list);
         }
     }
+    const handleDelete = (event, id) => {
+        fetch(`https://still-waters-21873.herokuapp.com/delete/${id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(result => {
+                if (result) {
+                    event.target.parentNode.style.display = 'none';
+                }
+            })
+    }
     return (
         <>
             <section className="banner">
@@ -95,10 +104,16 @@ const Home = () => {
                 <div className="container">
                     <div className="row">
                         {
-                            filteredData.map(apartment => <Apartments key={apartment.id} apartment={apartment}></Apartments>)
+                            filteredData.map(apartment => <Apartments key={apartment.id} apartment={apartment} handleDelete={handleDelete}></Apartments>)
                         }
                     </div>
                 </div>
+                {!Hotel.length &&
+                    <img style={{ margin: 'auto' }} src={loader} alt="" />
+                }
+                {Hotel.length && !filteredData.length &&
+                    <h2>Nothing found</h2>
+                }
             </section>
             {/* service */}
             <section className="my-5">

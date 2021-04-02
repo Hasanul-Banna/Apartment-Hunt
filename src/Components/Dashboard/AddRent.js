@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 import Sidebar from './Sidebar';
 
 const AddRent = () => {
+    let history = useHistory();
     const [roomInfo, setRoomInfo] = useState({});
     const [file, setFile] = useState(null);
 
@@ -32,7 +34,7 @@ const AddRent = () => {
         formData.append('Breakfast', roomInfo.Breakfast);
         formData.append('SwimmingPool', roomInfo.SwimmingPool);
         formData.append('Parking', roomInfo.Parking);
-
+        console.log(formData);
         fetch('https://still-waters-21873.herokuapp.com/addRoom', {
             method: 'POST',
             body: formData
@@ -45,6 +47,7 @@ const AddRent = () => {
                 console.error(error)
             })
         alert('Room added successfully!')
+        history.replace('/');
         event.preventDefault();
     }
     return (
@@ -58,8 +61,8 @@ const AddRent = () => {
                         <form onSubmit={handleSubmit} className="row mb-5">
                             <div className="col-md-6">
                                 <div className="form-group">
-                                    <label htmlFor="id">Room Id</label>
-                                    <input value={Date.now()} onBlur={handleBlur} type="text" className="form-control" name="id" id="id" placeholder="Unique Id" required />
+                                    <label htmlFor="id">Room Id (example) : {Date.now()}</label>
+                                    <input onBlur={handleBlur} type="text" className="form-control" name="id" id="id" placeholder="Copy & paste the unique Id" required />
                                     <label htmlFor="name">Room title</label>
                                     <input onBlur={handleBlur} type="text" className="form-control" name="name" id="name" placeholder="Single standard/Family Delux/Double" required />
                                     <label htmlFor="address">Address</label>

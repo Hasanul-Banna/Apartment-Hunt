@@ -5,7 +5,7 @@ import { faBath, faBed, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons
 import { Link } from 'react-router-dom';
 import { UserContext } from '../App';
 
-const Apartments = ({ apartment }) => {
+const Apartments = ({ apartment, handleDelete }) => {
     const [loggedInUser, setloggedInUser] = useContext(UserContext);
     const [admin, setAdmin] = useState(false);
 
@@ -34,11 +34,15 @@ const Apartments = ({ apartment }) => {
                         <Button className="btn" variant="info">Book Now</Button>
                     </Link>
                 </div>
-                {admin && <Link to={`/updateInfo/${apartment.id}`}>
+            </div>
+            {admin &&
+                <Link to={`/updateInfo/${apartment.id}`}>
                     <button className="btn-Warning" >Update Price</button>
                 </Link>}
-                {admin && <button className="btn-Danger float-right" >Delete</button>}
-            </div>
+            {admin &&
+                <button className="btn-Danger float-right"
+                    onClick={(e) => handleDelete(e, apartment.id)}>  Delete
+                    </button>}
         </div>
     );
 };
