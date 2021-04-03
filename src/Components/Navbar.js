@@ -16,8 +16,14 @@ const Navibar = () => {
                     <Link className="nav-link" to="/About">About</Link>
                     <Link className="nav-link" to="/Contact">Contact</Link>
                     <Link className="nav-link" to="/MyRent">Dashboard</Link>
-                    {!loggedInUser.email && <Link to="/Login"> <Button className="btn" variant="info">Log in</Button></Link>}
-                    {loggedInUser.email && <Button className="btn" variant="info" onClick={() => setloggedInUser('')} >Log Out</Button>}
+
+                    {!sessionStorage.getItem('CurrentUser') && !loggedInUser.email && 
+                        <Link to="/Login"> <Button className="btn" variant="info">Log in</Button></Link>
+                    }
+
+                    {sessionStorage.getItem('CurrentUser') || loggedInUser.email ?
+                        <Button className="btn" variant="info" onClick={() => { setloggedInUser(''); sessionStorage.removeItem("CurrentUser"); }} >Log Out</Button>
+                    :''}
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

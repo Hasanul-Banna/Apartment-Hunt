@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBath, faBed, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import { UserContext } from '../App';
+// import { UserContext } from '../App';
 
 const Apartments = ({ apartment, handleDelete }) => {
-    const [loggedInUser, setloggedInUser] = useContext(UserContext);
+    // const [loggedInUser, setloggedInUser] = useContext(UserContext);
     const [admin, setAdmin] = useState(false);
 
     useEffect(() => {
@@ -14,7 +14,7 @@ const Apartments = ({ apartment, handleDelete }) => {
         fetch(url, {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({ email: loggedInUser.email })
+            body: JSON.stringify({ email: sessionStorage.getItem('CurrentUser') })
         }).then(res => res.json()).then(data => setAdmin(data))
     }, []);
 

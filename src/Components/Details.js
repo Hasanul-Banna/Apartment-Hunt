@@ -20,11 +20,18 @@ const Details = () => {
     const { register, handleSubmit, errors } = useForm();
 
     const onSubmit = (data) => {
-        const date1 = new Date(data.CheckIN);
-        const date2 = new Date(data.CheckOUT);
-        const diffTime = Math.abs(date2 - date1);
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        setDayCount(diffDays + 1);
+        // const today = new Date().toISOString().slice(0, 10)
+        // const date11 = '2021-04-03' ;
+        // const date22 = '2021-04-10' ; 
+        // const diffTimee = Math.abs(date22 - date11);
+        // const diffDayss = Math.ceil(diffTimee / (1000 * 60 * 60 * 24));
+        // console.log(today <= date11, date11 <= date22 ,diffDayss + 1);
+        const today = new Date().toISOString().slice(0, 10);
+        const date1 = new Date(data.CheckIN).toISOString().slice(0, 10);
+        const date2 = new Date(data.CheckOUT).toISOString().slice(0, 10);
+        const date11 = new Date(data.CheckIN);
+        const date22 = new Date(data.CheckOUT);
+
         setstripeBtn(true);
 
         const formData = new FormData()
@@ -34,20 +41,32 @@ const Details = () => {
         formData.append('mobile', data.mobile);
         formData.append('CheckIN', data.CheckIN);
         formData.append('CheckOUT', data.CheckOUT);
+        console.log(today, date1, today <= date1, date1 <= date2);
+        if (today <= date1 && date1 <= date2) {
+            const diffTime = Math.abs(date22 - date11);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            setDayCount(diffDays + 1);
 
-        fetch('https://still-waters-21873.herokuapp.com/newBooking', {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
+            fetch('https://still-waters-21873.herokuapp.com/newBooking', {
+                method: 'POST',
+                body: formData
             })
-            .catch(error => {
-                console.error(error)
-            })
+                .then(response => response.json())
+                .then(data => {
+                    // console.log(data);
+
+                })
+                .catch(error => {
+                    // console.error(error)
+                })
+            alert(`Congratulation! You booked ${CurrentApartment.name} `);
+        } else {
+            alert('Invalid date input, enter a valid date range & request booking again.');
+        }
+
+
         // data.preventDefault();
-        alert(`You booked ${CurrentApartment.name} for ${dayCount} days`)
+
 
     }
 
@@ -76,10 +95,10 @@ const Details = () => {
                             {errors.email && <small className="text-danger">This field is required</small>} <br />
 
                             <input type="text" className="form-control" name="mobile" placeholder="Phone number" ref={register({ required: true })} />
-                            {errors.mobile && <small className="text-danger">This field is required</small>}
+                            {errors.mobile && <small className="text-danger">This field is required<br /></small>}
                             <small>Check In:</small>
                             <input type="date" className="form-control" name="CheckIN" ref={register({ required: true })} />
-                            {errors.CheckIN && <small className="text-danger">This field is required</small>}
+                            {errors.CheckIN && <small className="text-danger">This field is required<br /></small>}
                             <small>Check Out:</small>
 
                             <input type="date" className="form-control" name="CheckOUT" ref={register({ required: true })} />

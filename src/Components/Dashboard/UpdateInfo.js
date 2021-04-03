@@ -1,9 +1,9 @@
 import React from 'react';
-import { useHistory, useParams } from 'react-router';
+import { useParams } from 'react-router';
 
 
 const UpdateInfo = () => {
-    let history = useHistory();
+    // let history = useHistory();
     const { RoomID } = useParams();
     const handleUpdate = (e) => {
         const price = document.getElementById('price').value;
@@ -20,7 +20,7 @@ const UpdateInfo = () => {
                     alert('Price Updated Successfully!')
                 }
             })
-        history.replace('/');
+        // history.replace('/');
         e.preventDefault();
     }
     return (

@@ -23,7 +23,7 @@ const Login = () => {
                 const newUserInfo = { ...loggedInUser }
                 newUserInfo.name = res.user.displayName;
                 setloggedInUser(newUserInfo);
-                setUserToken();
+                sessionStorage.setItem('CurrentUser', data.email);
                 history.replace(from);
                 // console.log('alhamdulillah');
             })
@@ -33,13 +33,13 @@ const Login = () => {
                 setloggedInUser(newUserInfo);
             });
     };
-    const setUserToken = () => {
-        firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
-          sessionStorage.setItem('token', idToken);
-        }).catch(function(error) {
-          // Handle error
-        });
-      }
+    // const setUserToken = () => {
+    //     firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function (idToken) {
+    //         sessionStorage.setItem('token', idToken);
+    //     }).catch(function (error) {
+    //         // Handle error
+    //     });
+    // }
 
 
     return (
@@ -58,9 +58,9 @@ const Login = () => {
                 <Link to="/SignUp"><small>Don't have an account?</small></Link>
                 <p className="text-danger">{loggedInUser.error}</p>
                 <p id="or">Or</p>
-                <GoggleFbLogin/>
+                <GoggleFbLogin />
             </form>
-          </div>
+        </div>
     )
 
 };
